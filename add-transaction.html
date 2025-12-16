@@ -126,62 +126,22 @@
             margin-bottom: 24px;
         }
 
-        /* Logo */
+        /* ✅ New Logo Styles */
         .logo-small {
             width: 56px;
             height: 56px;
-            position: relative;
             flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .flower-small {
-            position: relative;
-            width: 56px;
-            height: 56px;
-        }
-
-        .petal-small {
-            position: absolute;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            opacity: 0.9;
-        }
-
-        .petal-small-1 {
-            background: linear-gradient(135deg, #FFB84D, #FFA726);
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .petal-small-2 {
-            background: linear-gradient(135deg, #5C6FFF, #4D5FFF);
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-        }
-
-        .petal-small-3 {
-            background: linear-gradient(135deg, #9B7EFF, #8A6FFF);
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .petal-small-4 {
-            background: linear-gradient(135deg, #7FD98A, #6BCF77);
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-        }
-
-        .petal-small-5 {
-            background: linear-gradient(135deg, #FF7B7B, #FF6B6B);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
+        .logo-small img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 16px;
+            display: block;
         }
 
         .title-text {
@@ -547,79 +507,26 @@
             }
         }
 
-        /* Success Logo */
+        /* ✅ Success Logo uses the PNG too */
         .success-logo {
             width: 100px;
             height: 100px;
             margin: 0 auto 24px;
-            position: relative;
+            border-radius: 50%;
             background: white;
-            border-radius: 50%;
-            padding: 15px;
+            padding: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .success-flower {
-            position: relative;
-            width: 70px;
-            height: 70px;
-            margin: 0 auto;
-        }
-
-        .success-petal {
-            position: absolute;
-            width: 35px;
-            height: 35px;
+        .success-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
             border-radius: 50%;
-            opacity: 0.9;
-        }
-
-        .success-petal-1 {
-            background: linear-gradient(135deg, #FFB84D, #FFA726);
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .success-petal-2 {
-            background: linear-gradient(135deg, #5C6FFF, #4D5FFF);
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-        }
-
-        .success-petal-3 {
-            background: linear-gradient(135deg, #9B7EFF, #8A6FFF);
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .success-petal-4 {
-            background: linear-gradient(135deg, #7FD98A, #6BCF77);
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-        }
-
-        .success-petal-5 {
-            background: linear-gradient(135deg, #FF7B7B, #FF6B6B);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-        }
-
-        .success-dollar {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 20px;
-            font-weight: 800;
-            color: white;
-            z-index: 3;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            display: block;
         }
 
         .success-title {
@@ -709,13 +616,8 @@
                 <!-- Title Section with Logo -->
                 <div class="title-section">
                     <div class="logo-small">
-                        <div class="flower-small">
-                            <div class="petal-small petal-small-1"></div>
-                            <div class="petal-small petal-small-2"></div>
-                            <div class="petal-small petal-small-3"></div>
-                            <div class="petal-small petal-small-4"></div>
-                            <div class="petal-small petal-small-5"></div>
-                        </div>
+                        <!-- ✅ New logo image -->
+                        <img src="categorio_logo.png" alt="Categorio logo">
                     </div>
                     <div class="title-text">
                         <h1 class="page-title">Add Transaction</h1>
@@ -846,17 +748,11 @@
             <div class="modal-overlay" id="successModal">
                 <div class="success-modal">
                     <div class="success-logo">
-                        <div class="success-flower">
-                            <div class="success-petal success-petal-1"></div>
-                            <div class="success-petal success-petal-2"></div>
-                            <div class="success-petal success-petal-3"></div>
-                            <div class="success-petal success-petal-4"></div>
-                            <div class="success-petal success-petal-5"></div>
-                            <div class="success-dollar">$</div>
-                        </div>
+                        <!-- ✅ Reuse logo in success modal -->
+                        <img src="categorio_logo.png" alt="Categorio logo">
                     </div>
                     <h2 class="success-title">Transaction Added!</h2>
-                    <p class="success-message">Your transaction has been successfully added saved and categorized.</p>
+                    <p class="success-message">Your transaction has been successfully added, saved, and categorized.</p>
                     <div class="success-buttons">
                         <button class="success-btn success-btn-primary" onclick="window.location.href='transactions.html'">
                             View Transactions

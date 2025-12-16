@@ -1,4 +1,4 @@
-# 🌸 Categorio
+# Categorio
 
 Categorio is a conceptual mobile-style web app that helps users **understand and organize their spending**.  
 It’s built as a single–page-per-screen prototype using HTML, CSS and vanilla JavaScript, styled to look like a modern banking app on a phone.

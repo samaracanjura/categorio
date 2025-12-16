@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Categorio - Profile">
+    <title>Categorio - Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #F5F7FA;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Phone Container */
+        .phone-container {
+            width: 414px;
+            height: 896px;
+            background: #000000;
+            border-radius: 60px;
+            padding: 20px 0 0 0;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Notch */
+        .notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 30px;
+            background: #000000;
+            border-radius: 0 0 20px 20px;
+            z-index: 100;
+        }
+
+        /* Screen */
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #FFFFFF;
+            border-radius: 45px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .phone-screen::-webkit-scrollbar {
+            width: 0;
+        }
+
+        /* Content Container */
+        .content-container {
+            padding: 20px;
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .back-button {
+            width: 48px;
+            height: 48px;
+            background: #F7F8FB;
+            border: none;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+
+        .back-button:hover {
+            background: #EBEEF5;
+        }
+
+        .settings-button {
+            width: 48px;
+            height: 48px;
+            background: #F7F8FB;
+            border: none;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 22px;
+            transition: all 0.3s;
+        }
+
+        .settings-button:hover {
+            background: #EBEEF5;
+        }
+
+        /* Profile Card */
+        .profile-card {
+            background: #F7F8FB;
+            border-radius: 24px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #5C6FFF 0%, #9B7EFF 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            flex-shrink: 0;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-size: 22px;
+            font-weight: 800;
+            color: #1E2A5E;
+            margin-bottom: 4px;
+        }
+
+        .profile-email {
+            font-size: 14px;
+            font-weight: 500;
+            color: #8B92A8;
+            margin-bottom: 6px;
+        }
+
+        .profile-member {
+            font-size: 13px;
+            font-weight: 500;
+            color: #B8BFCE;
+        }
+
+        /* Balance Card */
+        .balance-card {
+            background: white;
+            border: 2px solid #F0F2F7;
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .balance-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .balance-left {
+            flex: 1;
+        }
+
+        .balance-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #8B92A8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .balance-amount {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1E2A5E;
+            margin-bottom: 0;
+        }
+
+        .balance-right {
+            text-align: right;
+        }
+
+        .month-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #8B92A8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .month-amount {
+            font-size: 24px;
+            font-weight: 800;
+            color: #FF4E4E;
+        }
+
+        .progress-section {
+            margin-top: 16px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .progress-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #8B92A8;
+        }
+
+        .progress-percentage {
+            font-size: 13px;
+            font-weight: 700;
+            color: #5C6FFF;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #F0F2F7;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 28%;
+            height: 100%;
+            background: linear-gradient(90deg, #5C6FFF 0%, #8B7EFF 100%);
+            border-radius: 4px;
+            transition: width 0.6s ease;
+        }
+
+        /* Goal Card */
+        .goal-card {
+            background: linear-gradient(135deg, #E0F7E9 0%, #C8EED9 100%);
+            border-radius: 24px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .goal-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.15);
+        }
+
+        .goal-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            flex-shrink: 0;
+            box-shadow: 0 6px 16px rgba(76, 175, 80, 0.3);
+        }
+
+        .goal-content {
+            flex: 1;
+        }
+
+        .goal-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1E2A5E;
+            margin-bottom: 6px;
+        }
+
+        .goal-count {
+            font-size: 24px;
+            font-weight: 800;
+            color: #4CAF50;
+            margin-bottom: 8px;
+        }
+
+        .goal-action {
+            font-size: 14px;
+            font-weight: 600;
+            color: #4CAF50;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Recent Activity */
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1E2A5E;
+            margin-bottom: 16px;
+        }
+
+        .activity-card {
+            background: white;
+            border: 2px solid #F0F2F7;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .activity-dot {
+            width: 8px;
+            height: 8px;
+            background: #5C6FFF;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .activity-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1E2A5E;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .action-btn {
+            background: white;
+            border: 2px solid #F0F2F7;
+            border-radius: 18px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .action-btn:hover {
+            border-color: #5C6FFF;
+            box-shadow: 0 4px 16px rgba(92, 111, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .action-icon {
+            font-size: 36px;
+        }
+
+        .action-label {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1E2A5E;
+        }
+
+        /* Log Out Button */
+        .logout-btn {
+            width: 100%;
+            padding: 18px;
+            background: white;
+            border: 2px solid #F0F2F7;
+            border-radius: 18px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #1E2A5E;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 16px;
+        }
+
+        .logout-btn:hover {
+            border-color: #FF4E4E;
+            color: #FF4E4E;
+            background: #FFF5F5;
+        }
+
+        /* Help & Support Button */
+        .help-btn {
+            width: 100%;
+            padding: 18px;
+            background: white;
+            border: 2px solid #5C6FFF;
+            border-radius: 18px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #5C6FFF;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .help-btn:hover {
+            background: #F7F8FB;
+            transform: translateY(-2px);
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            background: white;
+            border-top: 1px solid #F0F2F7;
+            padding: 12px 20px 28px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 0 0 45px 45px;
+            flex-shrink: 0;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 8px 12px;
+            border-radius: 12px;
+        }
+
+        .nav-item:hover {
+            background: #F7F8FB;
+        }
+
+        .nav-item.active {
+            color: #5C6FFF;
+        }
+
+        .nav-icon {
+            font-size: 24px;
+        }
+
+        .nav-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #8B92A8;
+        }
+
+        .nav-item.active .nav-label {
+            color: #5C6FFF;
+        }
+
+        /* Responsive */
+        @media (max-width: 450px) {
+            .phone-container {
+                width: 100%;
+                border-radius: 0;
+                height: 100vh;
+            }
+
+            .phone-screen {
+                border-radius: 0;
+            }
+
+            .bottom-nav {
+                width: 100%;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-container">
+        <div class="notch"></div>
+
+        <div class="phone-screen">
+            <div class="content-container">
+                <!-- Header -->
+                <div class="header">
+                    <button class="back-button" onclick="window.location.href='index.html'">←</button>
+                    <button class="settings-button">⚙️</button>
+                </div>
+
+                <!-- Profile Card -->
+                <div class="profile-card">
+                    <div class="profile-avatar">👤</div>
+                    <div class="profile-info">
+                        <h1 class="profile-name">Alex Thomas</h1>
+                        <p class="profile-email">alex.thomas@email.com</p>
+                        <p class="profile-member">Member Since Jan 2025</p>
+                    </div>
+                </div>
+
+                <!-- Balance Card -->
+                <div class="balance-card">
+                    <div class="balance-header">
+                        <div class="balance-left">
+                            <div class="balance-label">Current Balance</div>
+                            <div class="balance-amount">$4,562.80</div>
+                        </div>
+                        <div class="balance-right">
+                            <div class="month-label">This Month</div>
+                            <div class="month-amount">$1,290</div>
+                        </div>
+                    </div>
+                    <div class="progress-section">
+                        <div class="progress-info">
+                            <span class="progress-label">Spending Progress</span>
+                            <span class="progress-percentage">28% of budget</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Goal Achievements -->
+                <div class="goal-card">
+                    <div class="goal-icon">🏆</div>
+                    <div class="goal-content">
+                        <div class="goal-title">Goal Achievements</div>
+                        <div class="goal-count">3 goals completed</div>
+                        <div class="goal-action">Tap To View More →</div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <h2 class="section-title">Recent Activity</h2>
+                <div class="activity-card">
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-dot"></div>
+                            <span class="activity-text">Last Login 2 hours ago</span>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-dot"></div>
+                            <span class="activity-text">2 new AI insights available</span>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-dot"></div>
+                            <span class="activity-text">3 new transactions categorized</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="action-btn" onclick="window.location.href='transactions.html'">
+                        <div class="action-icon">💳</div>
+                        <div class="action-label">View Transactions</div>
+                    </button>
+                    <button class="action-btn">
+                        <div class="action-icon">📤</div>
+                        <div class="action-label">Upload Documents</div>
+                    </button>
+                </div>
+
+                <!-- Log Out -->
+                <button class="logout-btn" onclick="if(confirm('Are you sure you want to log out?')) window.location.href='login.html'">
+                    Log Out
+                </button>
+
+                <!-- Help & Support -->
+                <button class="help-btn">
+                    ℹ️ Help & Support
+                </button>
+
+                <div style="height: 20px;"></div>
+            </div> <!-- end .content-container -->
+
+            <!-- Bottom Navigation INSIDE the screen -->
+            <nav class="bottom-nav">
+                <div class="nav-item" onclick="navigateTo('index.html')">
+                    <div class="nav-icon">🏠</div>
+                    <div class="nav-label">Home</div>
+                </div>
+                <div class="nav-item" onclick="navigateTo('transactions.html')">
+                    <div class="nav-icon">🧾</div>
+                    <div class="nav-label">Transactions</div>
+                </div>
+                <div class="nav-item" onclick="navigateTo('add-transaction.html')">
+                    <div class="nav-icon">➕</div>
+                    <div class="nav-label">Add</div>
+                </div>
+                <div class="nav-item" onclick="navigateTo('insights.html')">
+                    <div class="nav-icon">📊</div>
+                    <div class="nav-label">Insights</div>
+                </div>
+                <div class="nav-item active" onclick="navigateTo('profile.html')">
+                    <div class="nav-icon">👤</div>
+                    <div class="nav-label">Profile</div>
+                </div>
+            </nav>
+        </div> <!-- end .phone-screen -->
+    </div> <!-- end .phone-container -->
+
+    <script src="app.js"></script>
+</body>
+</html>

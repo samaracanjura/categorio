@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Categorio - Transactions">
+    <title>Categorio - Transactions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #F5F7FA;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Phone Container */
+        .phone-container {
+            width: 414px;
+            height: 896px;
+            background: #000000;
+            border-radius: 60px;
+            padding: 20px 0 0 0;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Notch */
+        .notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 30px;
+            background: #000000;
+            border-radius: 0 0 20px 20px;
+            z-index: 100;
+        }
+
+        /* Screen */
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #FFFFFF;
+            border-radius: 45px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .phone-screen::-webkit-scrollbar {
+            width: 0;
+        }
+
+        /* Content Container */
+        .content-container {
+            padding: 20px;
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .back-button {
+            width: 48px;
+            height: 48px;
+            background: #F7F8FB;
+            border: none;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+
+        .back-button:hover {
+            background: #EBEEF5;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .icon-button {
+            width: 48px;
+            height: 48px;
+            background: #F7F8FB;
+            border: none;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 22px;
+            transition: all 0.3s;
+        }
+
+        .icon-button:hover {
+            background: #EBEEF5;
+        }
+
+        /* Page Title */
+        .page-title-section {
+            margin-bottom: 20px;
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1E2A5E;
+            margin-bottom: 6px;
+        }
+
+        .page-subtitle {
+            font-size: 14px;
+            font-weight: 500;
+            color: #8B92A8;
+        }
+
+        /* Filter Pills */
+        .filter-pills {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            padding-bottom: 4px;
+        }
+
+        .filter-pills::-webkit-scrollbar {
+            height: 0;
+        }
+
+        .filter-pill {
+            padding: 10px 18px;
+            border-radius: 20px;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .filter-pill.active {
+            background: #5C6FFF;
+            color: white;
+        }
+
+        .filter-pill:not(.active) {
+            background: #F7F8FB;
+            color: #1E2A5E;
+        }
+
+        .filter-pill:not(.active):hover {
+            background: #EBEEF5;
+        }
+
+        .filter-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .dot-all { background: white; }
+        .dot-food { background: #FF6B6B; }
+        .dot-shopping { background: #FF69B4; }
+        .dot-transport { background: #8B7EFF; }
+        .dot-utilities { background: #00CED1; }
+        .dot-entertainment { background: #6366F1; }
+        .dot-income { background: #4CAF50; }
+
+        /* Summary Cards */
+        .summary-section {
+            background: #F7F8FB;
+            border-radius: 20px;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .summary-item {
+            text-align: center;
+        }
+
+        .summary-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #8B92A8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .summary-value {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .value-income { color: #4CAF50; }
+        .value-expense { color: #FF4E4E; }
+        .value-net { color: #00CED1; }
+
+        /* Section Header */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1E2A5E;
+        }
+
+        .review-all {
+            font-size: 14px;
+            font-weight: 600;
+            color: #5C6FFF;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .review-all:hover {
+            text-decoration: underline;
+        }
+
+        /* Date Divider */
+        .date-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 24px 0 16px 0;
+        }
+
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: #E8EBF3;
+        }
+
+        .divider-text {
+            font-size: 13px;
+            font-weight: 600;
+            color: #8B92A8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Transaction List */
+        .transaction-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Transaction Card */
+        .transaction-card {
+            background: white;
+            border: 2px solid #F0F2F7;
+            border-radius: 18px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .transaction-card:hover {
+            border-color: #5C6FFF;
+            box-shadow: 0 4px 16px rgba(92, 111, 255, 0.1);
+        }
+
+        /* Transaction Icon */
+        .transaction-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        /* Verified Badge */
+        .verified-badge {
+            position: absolute;
+            bottom: -4px;
+            right: -4px;
+            width: 22px;
+            height: 22px;
+            background: #4CAF50;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        /* Icon Backgrounds */
+        .icon-food { background: linear-gradient(135deg, #FFE5E5, #FFCCCB); }
+        .icon-shopping { background: linear-gradient(135deg, #FFE5F5, #FFD0EB); }
+        .icon-transport { background: linear-gradient(135deg, #E5E5FF, #D0D0FF); }
+        .icon-utilities { background: linear-gradient(135deg, #E0F7FA, #B2EBF2); }
+        .icon-income { background: linear-gradient(135deg, #E0F7E9, #B2EBD4); }
+
+        /* Transaction Content */
+        .transaction-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .transaction-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1E2A5E;
+            margin-bottom: 6px;
+        }
+
+        .transaction-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .category-badge {
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .badge-food { background: #FF6B6B; }
+        .badge-shopping { background: #FF69B4; }
+        .badge-transport { background: #8B7EFF; }
+        .badge-utilities { background: #00CED1; }
+        .badge-income { background: #4CAF50; }
+
+        .transaction-time {
+            font-size: 13px;
+            font-weight: 500;
+            color: #8B92A8;
+        }
+
+        /* Transaction Right Side */
+        .transaction-right {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+        }
+
+        .transaction-amount {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1E2A5E;
+        }
+
+        .amount-positive {
+            color: #4CAF50;
+        }
+
+        .status-badge {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .status-paid {
+            background: #E0F7E9;
+            color: #4CAF50;
+        }
+
+        .status-pending {
+            background: #FFF4E0;
+            color: #FFA726;
+        }
+
+        .status-received {
+            background: #E0F7FA;
+            color: #00CED1;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            background: white;
+            border-top: 1px solid #F0F2F7;
+            padding: 12px 20px 28px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 0 0 45px 45px;
+            flex-shrink: 0;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 8px 12px;
+            border-radius: 12px;
+        }
+
+        .nav-item:hover {
+            background: #F7F8FB;
+        }
+
+        .nav-item.active {
+            color: #5C6FFF;
+        }
+
+        .nav-icon {
+            font-size: 24px;
+        }
+
+        .nav-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #8B92A8;
+        }
+
+        .nav-item.active .nav-label {
+            color: #5C6FFF;
+        }
+
+        /* Responsive */
+        @media (max-width: 450px) {
+            .phone-container {
+                width: 100%;
+                border-radius: 0;
+                height: 100vh;
+            }
+
+            .phone-screen {
+                border-radius: 0;
+            }
+
+            .bottom-nav {
+                width: 100%;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-container">
+        <div class="notch"></div>
+
+        <div class="phone-screen">
+            <div class="content-container">
+                <!-- Header -->
+                <div class="header">
+                    <button class="back-button" onclick="window.location.href='index.html'">←</button>
+                    <div class="header-actions">
+                        <button class="icon-button">🧾</button>
+                        <button class="icon-button">🔍</button>
+                    </div>
+                </div>
+
+                <!-- Page Title -->
+                <div class="page-title-section">
+                    <h1 class="page-title">Transactions</h1>
+                    <p class="page-subtitle">All 52 transactions analyzed • Tap to view</p>
+                </div>
+
+                <!-- Filter Pills -->
+                <div class="filter-pills">
+                    <button class="filter-pill active">
+                        <span class="filter-dot dot-all"></span>
+                        All
+                    </button>
+                    <button class="filter-pill">
+                        <span class="filter-dot dot-food"></span>
+                        Food
+                    </button>
+                    <button class="filter-pill">
+                        <span class="filter-dot dot-shopping"></span>
+                        Shopping
+                    </button>
+                    <button class="filter-pill">
+                        <span class="filter-dot dot-transport"></span>
+                        Transport
+                    </button>
+                    <button class="filter-pill">
+                        <span class="filter-dot dot-utilities"></span>
+                        Utilities
+                    </button>
+                    <button class="filter-pill">
+                        <span class="filter-dot dot-entertainment"></span>
+                        Entertainment
+                    </button>
+                    <button class="filter-pill">
+                        <span class="filter-dot dot-income"></span>
+                        Income
+                    </button>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="summary-section">
+                    <div class="summary-item">
+                        <div class="summary-label">Income</div>
+                        <div class="summary-value value-income">+$3,200</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Expenses</div>
+                        <div class="summary-value value-expense">-$1,290</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Net</div>
+                        <div class="summary-value value-net">+$1,910</div>
+                    </div>
+                </div>
+
+                <!-- Today Section -->
+                <div class="section-header">
+                    <h2 class="section-title">Today</h2>
+                    <a href="#" class="review-all">Review All</a>
+                </div>
+
+                <div class="transaction-list">
+                    <!-- Pizza Place -->
+                    <div class="transaction-card">
+                        <div class="transaction-icon icon-food">
+                            🍕
+                            <div class="verified-badge">✓</div>
+                        </div>
+                        <div class="transaction-content">
+                            <div class="transaction-name">Pizza Place</div>
+                            <div class="transaction-meta">
+                                <span class="category-badge badge-food">Food</span>
+                                <span class="transaction-time">2:45 PM</span>
+                            </div>
+                        </div>
+                        <div class="transaction-right">
+                            <div class="transaction-amount">-$24.50</div>
+                            <div class="status-badge status-paid">PAID</div>
+                        </div>
+                    </div>
+
+                    <!-- Starbucks -->
+                    <div class="transaction-card">
+                        <div class="transaction-icon icon-food">
+                            ☕
+                            <div class="verified-badge">✓</div>
+                        </div>
+                        <div class="transaction-content">
+                            <div class="transaction-name">Starbucks</div>
+                            <div class="transaction-meta">
+                                <span class="category-badge badge-food">Food</span>
+                                <span class="transaction-time">9:15 AM</span>
+                            </div>
+                        </div>
+                        <div class="transaction-right">
+                            <div class="transaction-amount">-$6.75</div>
+                            <div class="status-badge status-paid">PAID</div>
+                        </div>
+                    </div>
+
+                    <!-- Uber -->
+                    <div class="transaction-card">
+                        <div class="transaction-icon icon-transport">
+                            🚗
+                            <div class="verified-badge">✓</div>
+                        </div>
+                        <div class="transaction-content">
+                            <div class="transaction-name">Uber</div>
+                            <div class="transaction-meta">
+                                <span class="category-badge badge-transport">Transport</span>
+                                <span class="transaction-time">8:30 AM</span>
+                            </div>
+                        </div>
+                        <div class="transaction-right">
+                            <div class="transaction-amount">-$15.20</div>
+                            <div class="status-badge status-paid">PAID</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yesterday Section -->
+                <div class="date-divider">
+                    <div class="divider-line"></div>
+                    <div class="divider-text">Yesterday</div>
+                    <div class="divider-line"></div>
+                </div>
+
+                <div class="transaction-list">
+                    <!-- Fashion Store -->
+                    <div class="transaction-card">
+                        <div class="transaction-icon icon-shopping">
+                            👕
+                            <div class="verified-badge">✓</div>
+                        </div>
+                        <div class="transaction-content">
+                            <div class="transaction-name">Fashion Store</div>
+                            <div class="transaction-meta">
+                                <span class="category-badge badge-shopping">Shopping</span>
+                                <span class="transaction-time">Dec 2</span>
+                            </div>
+                        </div>
+                        <div class="transaction-right">
+                            <div class="transaction-amount">-$156.99</div>
+                            <div class="status-badge status-paid">PAID</div>
+                        </div>
+                    </div>
+
+                    <!-- Electric Bill -->
+                    <div class="transaction-card">
+                        <div class="transaction-icon icon-utilities">
+                            💡
+                            <div class="verified-badge">✓</div>
+                        </div>
+                        <div class="transaction-content">
+                            <div class="transaction-name">Electric Bill</div>
+                            <div class="transaction-meta">
+                                <span class="category-badge badge-utilities">Utilities</span>
+                                <span class="transaction-time">Dec 2</span>
+                            </div>
+                        </div>
+                        <div class="transaction-right">
+                            <div class="transaction-amount">-$89.99</div>
+                            <div class="status-badge status-pending">PENDING</div>
+                        </div>
+                    </div>
+
+                    <!-- Salary Deposit -->
+                    <div class="transaction-card">
+                        <div class="transaction-icon icon-income">
+                            💵
+                            <div class="verified-badge">✓</div>
+                        </div>
+                        <div class="transaction-content">
+                            <div class="transaction-name">Salary Deposit</div>
+                            <div class="transaction-meta">
+                                <span class="category-badge badge-income">Income</span>
+                                <span class="transaction-time">Dec 2</span>
+                            </div>
+                        </div>
+                        <div class="transaction-right">
+                            <div class="transaction-amount amount-positive">+$3,200</div>
+                            <div class="status-badge status-received">RECEIVED</div>
+                        </div>
+                    </div>
+
+                    <!-- McDonald's -->
+                    <div class="transaction-card">
+                        <div class="transaction-icon icon-food">
+                            🍔
+                            <div class="verified-badge">✓</div>
+                        </div>
+                        <div class="transaction-content">
+                            <div class="transaction-name">McDonald's</div>
+                            <div class="transaction-meta">
+                                <span class="category-badge badge-food">Food</span>
+                                <span class="transaction-time">Dec 2</span>
+                            </div>
+                        </div>
+                        <div class="transaction-right">
+                            <div class="transaction-amount">-$12.45</div>
+                            <div class="status-badge status-paid">PAID</div>
+                        </div>
+                    </div>
+
+                    <!-- Playstation Store -->
+                    <div class="transaction-card">
+                        <div class="transaction-icon icon-shopping">
+                            🎮
+                            <div class="verified-badge">✓</div>
+                        </div>
+                        <div class="transaction-content">
+                            <div class="transaction-name">Playstation Store</div>
+                            <div class="transaction-meta">
+                                <span class="category-badge badge-shopping">Shopping</span>
+                                <span class="transaction-time">Dec 2</span>
+                            </div>
+                        </div>
+                        <div class="transaction-right">
+                            <div class="transaction-amount">-$29.99</div>
+                            <div class="status-badge status-paid">PAID</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="height: 20px;"></div>
+            </div> <!-- end .content-container -->
+
+            <!-- Bottom Navigation INSIDE the screen -->
+            <nav class="bottom-nav">
+                <div class="nav-item" onclick="navigateTo('index.html')">
+                    <div class="nav-icon">🏠</div>
+                    <div class="nav-label">Home</div>
+                </div>
+                <div class="nav-item active" onclick="navigateTo('transactions.html')">
+                    <div class="nav-icon">🧾</div>
+                    <div class="nav-label">Transactions</div>
+                </div>
+                <div class="nav-item" onclick="navigateTo('add-transaction.html')">
+                    <div class="nav-icon">➕</div>
+                    <div class="nav-label">Add</div>
+                </div>
+                <div class="nav-item" onclick="navigateTo('insights.html')">
+                    <div class="nav-icon">📊</div>
+                    <div class="nav-label">Insights</div>
+                </div>
+                <div class="nav-item" onclick="navigateTo('profile.html')">
+                    <div class="nav-icon">👤</div>
+                    <div class="nav-label">Profile</div>
+                </div>
+            </nav>
+        </div> <!-- end .phone-screen -->
+    </div> <!-- end .phone-container -->
+
+    <script src="app.js"></script>
+</body>
+</html>

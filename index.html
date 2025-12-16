@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Categorio - Dashboard">
+    <title>Categorio - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #F5F7FA;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Phone Container */
+        .phone-container {
+            width: 414px;
+            height: 896px;
+            background: #000000;
+            border-radius: 60px;
+            padding: 20px 0 0 0;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Notch */
+        .notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 30px;
+            background: #000000;
+            border-radius: 0 0 20px 20px;
+            z-index: 100;
+        }
+
+        /* Screen */
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #FFFFFF;
+            border-radius: 45px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .phone-screen::-webkit-scrollbar {
+            width: 0;
+        }
+
+        /* Content Container */
+        .content-container {
+            padding: 20px;
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Logo (new image-based logo) */
+        .logo-small {
+            width: 50px;
+            height: 50px;
+            flex-shrink: 0;
+        }
+
+        .logo-small img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        .greeting-text {
+            flex: 1;
+        }
+
+        .greeting {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1E2A5E;
+            margin-bottom: 2px;
+        }
+
+        .user-name {
+            font-size: 14px;
+            font-weight: 500;
+            color: #8B92A8;
+        }
+
+        /* Notification Bell */
+        .notification-btn {
+            width: 48px;
+            height: 48px;
+            background: #F7F8FB;
+            border: none;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .notification-btn:hover {
+            background: #EBEEF5;
+        }
+
+        .notification-icon {
+            font-size: 24px;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 20px;
+            height: 20px;
+            background: #FF4E4E;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            color: white;
+        }
+
+        /* Balance Card */
+        .balance-card {
+            background: linear-gradient(135deg, #5C6FFF 0%, #8B7EFF 100%);
+            border-radius: 24px;
+            padding: 28px 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 12px 32px rgba(92, 111, 255, 0.25);
+        }
+
+        .balance-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .balance-amount {
+            font-size: 48px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .balance-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .balance-btn {
+            flex: 1;
+            padding: 14px 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .balance-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* AI Insights Section */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1E2A5E;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .view-all {
+            font-size: 14px;
+            font-weight: 600;
+            color: #5C6FFF;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .view-all:hover {
+            text-decoration: underline;
+        }
+
+        /* Insight Cards */
+        .insights-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .insight-card {
+            background: #F7F8FB;
+            border-radius: 18px;
+            padding: 16px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .insight-card:hover {
+            background: #EBEEF5;
+            transform: translateX(4px);
+        }
+
+        .insight-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            flex-shrink: 0;
+        }
+
+        .insight-icon-1 { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); }
+        .insight-icon-2 { background: linear-gradient(135deg, #FFF9C4, #FFEB3B); }
+        .insight-icon-3 { background: linear-gradient(135deg, #FFCDD2, #EF9A9A); }
+        .insight-icon-4 { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); }
+
+        .insight-content {
+            flex: 1;
+        }
+
+        .insight-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1E2A5E;
+            margin-bottom: 4px;
+        }
+
+        .insight-description {
+            font-size: 13px;
+            font-weight: 500;
+            color: #8B92A8;
+            line-height: 1.5;
+        }
+
+        .insight-value {
+            font-size: 18px;
+            font-weight: 800;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        .value-negative { color: #FF4E4E; }
+        .value-positive { color: #4CAF50; }
+        .value-percentage { color: #5C6FFF; }
+
+        /* Get Personalized Tips Button */
+        .tips-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #5C6FFF 0%, #7B87FF 100%);
+            border: none;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(92, 111, 255, 0.3);
+            margin-bottom: 32px;
+        }
+
+        .tips-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(92, 111, 255, 0.4);
+        }
+
+        /* Recent Activity Section */
+        .activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .activity-card {
+            background: white;
+            border: 2px solid #F0F2F7;
+            border-radius: 18px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .activity-card:hover {
+            border-color: #5C6FFF;
+            box-shadow: 0 4px 16px rgba(92, 111, 255, 0.1);
+        }
+
+        .activity-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            flex-shrink: 0;
+        }
+
+        .activity-icon-food { background: linear-gradient(135deg, #FFEBEE, #FFCDD2); }
+        .activity-icon-income { background: linear-gradient(135deg, #E0F7FA, #B2EBF2); }
+        .activity-icon-utilities { background: linear-gradient(135deg, #E1F5FE, #B3E5FC); }
+        .activity-icon-shopping { background: linear-gradient(135deg, #F3E5F5, #E1BEE7); }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1E2A5E;
+            margin-bottom: 4px;
+        }
+
+        .activity-category {
+            font-size: 13px;
+            font-weight: 500;
+            color: #8B92A8;
+        }
+
+        .activity-amount {
+            font-size: 18px;
+            font-weight: 800;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        .amount-expense { color: #1E2A5E; }
+        .amount-income { color: #4CAF50; }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            background: white;
+            border-top: 1px solid #F0F2F7;
+            padding: 12px 20px 28px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 0 0 45px 45px;
+            flex-shrink: 0;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 8px 12px;
+            border-radius: 12px;
+        }
+
+        .nav-item:hover {
+            background: #F7F8FB;
+        }
+
+        .nav-item.active {
+            color: #5C6FFF;
+        }
+
+        .nav-icon {
+            font-size: 24px;
+        }
+
+        .nav-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: #8B92A8;
+        }
+
+        .nav-item.active .nav-label {
+            color: #5C6FFF;
+        }
+
+        /* Responsive */
+        @media (max-width: 450px) {
+            .phone-container {
+                width: 100%;
+                border-radius: 0;
+                height: 100vh;
+            }
+
+            .phone-screen {
+                border-radius: 0;
+            }
+
+            .bottom-nav {
+                width: 100%;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-container">
+        <div class="notch"></div>
+
+        <div class="phone-screen">
+            <div class="content-container">
+                <!-- Header -->
+                <div class="header">
+                    <div class="header-left">
+                        <div class="logo-small">
+                            <img src="categorio_logo.png" alt="Categorio logo">
+                            <!-- If the image is in a folder, e.g. images/categorio_logo.png, update the src accordingly -->
+                        </div>
+                        <div class="greeting-text">
+                            <h1 class="greeting">Good Afternoon,</h1>
+                            <p class="user-name">Alex Thomas</p>
+                        </div>
+                    </div>
+                    <button class="notification-btn">
+                        <span class="notification-icon">🔔</span>
+                        <span class="notification-badge">3</span>
+                    </button>
+                </div>
+
+                <!-- Balance Card -->
+                <div class="balance-card">
+                    <div class="balance-label">Total Balance</div>
+                    <div class="balance-amount">$4,562.80</div>
+                    <div class="balance-actions">
+                        <button class="balance-btn">+ Add Money</button>
+                        <button class="balance-btn">Send →</button>
+                    </div>
+                </div>
+
+                <!-- AI Insights Section -->
+                <div class="section-header">
+                    <h2 class="section-title">✨ AI Insights</h2>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+
+                <div class="insights-list">
+                    <!-- Smart Suggestions -->
+                    <div class="insight-card">
+                        <div class="insight-icon insight-icon-1">🤖</div>
+                        <div class="insight-content">
+                            <div class="insight-title">Smart Suggestions</div>
+                            <div class="insight-description">Based on your spending patterns</div>
+                        </div>
+                    </div>
+
+                    <!-- Reduce Food Spending -->
+                    <div class="insight-card">
+                        <div class="insight-icon insight-icon-2">💡</div>
+                        <div class="insight-content">
+                            <div class="insight-title">Reduce Food Spending</div>
+                            <div class="insight-description">You spend 23% more on dining this week. Try meal prepping!</div>
+                        </div>
+                        <div class="insight-value value-negative">-$84</div>
+                    </div>
+
+                    <!-- Budget Reminder -->
+                    <div class="insight-card">
+                        <div class="insight-icon insight-icon-3">🎯</div>
+                        <div class="insight-content">
+                            <div class="insight-title">Budget Reminder</div>
+                            <div class="insight-description">You're 80% through your monthly entertainment budget.</div>
+                        </div>
+                        <div class="insight-value value-percentage">80%</div>
+                    </div>
+
+                    <!-- Save More This Month -->
+                    <div class="insight-card">
+                        <div class="insight-icon insight-icon-4">💰</div>
+                        <div class="insight-content">
+                            <div class="insight-title">Save More This Month</div>
+                            <div class="insight-description">You could save $200 by reducing impulse purchases.</div>
+                        </div>
+                        <div class="insight-value value-positive">+$200</div>
+                    </div>
+                </div>
+
+                <!-- Get Personalized Tips Button -->
+                <button class="tips-button">Get Personalized Tips</button>
+
+                <!-- Recent Activity Section -->
+                <div class="section-header">
+                    <h2 class="section-title">📋 Recent Activity</h2>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+
+                <div class="activity-list">
+                    <!-- Pizza Place -->
+                    <div class="activity-card">
+                        <div class="activity-icon activity-icon-food">🍕</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Pizza Place</div>
+                            <div class="activity-category">Food & Dining</div>
+                        </div>
+                        <div class="activity-amount amount-expense">-$24.50</div>
+                    </div>
+
+                    <!-- Salary Deposit -->
+                    <div class="activity-card">
+                        <div class="activity-icon activity-icon-income">💵</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Salary Deposit</div>
+                            <div class="activity-category">Income</div>
+                        </div>
+                        <div class="activity-amount amount-income">+$3,200</div>
+                    </div>
+
+                    <!-- Electric Bill -->
+                    <div class="activity-card">
+                        <div class="activity-icon activity-icon-utilities">💡</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Electric Bill</div>
+                            <div class="activity-category">Utilities</div>
+                        </div>
+                        <div class="activity-amount amount-expense">-$89.00</div>
+                    </div>
+
+                    <!-- Fashion Store -->
+                    <div class="activity-card">
+                        <div class="activity-icon activity-icon-shopping">👕</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Fashion Store</div>
+                            <div class="activity-category">Shopping</div>
+                        </div>
+                        <div class="activity-amount amount-expense">-$156.99</div>
+                    </div>
+                </div>
+
+                <div style="height: 20px;"></div>
+            </div> <!-- end .content-container -->
+
+            <!-- Bottom Navigation INSIDE the screen -->
+            <nav class="bottom-nav">
+                <div class="nav-item active" onclick="navigateTo('index.html')">
+                    <div class="nav-icon">🏠</div>
+                    <div class="nav-label">Home</div>
+                </div>
+                <div class="nav-item" onclick="navigateTo('transactions.html')">
+                    <div class="nav-icon">🧾</div>
+                    <div class="nav-label">Transactions</div>
+                </div>
+                <div class="nav-item" onclick="navigateTo('add-transaction.html')">
+                    <div class="nav-icon">➕</div>
+                    <div class="nav-label">Add</div>
+                </div>
+                <div class="nav-item" onclick="navigateTo('insights.html')">
+                    <div class="nav-icon">📊</div>
+                    <div class="nav-label">Insights</div>
+                </div>
+                <div class="nav-item" onclick="navigateTo('profile.html')">
+                    <div class="nav-icon">👤</div>
+                    <div class="nav-label">Profile</div>
+                </div>
+            </nav>
+        </div> <!-- end .phone-screen -->
+    </div> <!-- end .phone-container -->
+
+    <script src="app.js"></script>
+</body>
+</html>

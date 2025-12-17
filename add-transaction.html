@@ -725,13 +725,12 @@
                     <label class="form-label">Date</label>
                     <div class="date-input-wrapper">
                         <input 
-                            type="text" 
+                            type="date" 
                             class="date-input" 
                             placeholder="Please Enter Date"
                             id="dateInput"
-                            readonly
                         >
-                        <span class="calendar-icon">📅</span>
+                        <span class="calendar-icon"><i class="fa-solid fa-calendar"></i></span>
                     </div>
                 </div>
 
@@ -747,7 +746,7 @@
 
                 <!-- Submit Button -->
                 <button class="submit-button" id="submitBtn">
-                    ✓ Add Transaction
+                    <i class="fa-solid fa-plus"></i> Add Transaction
                 </button>
 
                 <div style="height: 20px;"></div>
@@ -781,7 +780,6 @@
             <div class="modal-overlay" id="successModal">
                 <div class="success-modal">
                     <div class="success-logo">
-                        <!-- ✅ Reuse logo in success modal -->
                         <img src="categorio_logo.png" alt="Categorio logo">
                     </div>
                     <h2 class="success-title">Transaction Added!</h2>
@@ -843,16 +841,13 @@
             });
         });
 
-        // Date picker (simple version)
+        // native date picker
         const dateInput = document.getElementById('dateInput');
-        dateInput.addEventListener('click', () => {
-            const today = new Date().toLocaleDateString('en-US', { 
-                month: 'short', 
-                day: 'numeric', 
-                year: 'numeric' 
-            });
-            dateInput.value = today;
-        });
+        const todayISO = new Date().toISOString().split('T')[0];
+        if (dateInput) {
+            dateInput.value = todayISO;
+            dateInput.max = todayISO; // prevent selecting a date in the future
+        }
 
         // Form submission
         document.getElementById('submitBtn').addEventListener('click', () => {
@@ -883,17 +878,21 @@
 
         // Close modal function (used by navigation.js Esc handler too)
         function closeModal() {
-            document.getElementById('successModal').classList.remove('show');
-            // Reset form
-            amount = 0;
-            updateAmountDisplay();
-            document.getElementById('merchantInput').value = '';
-            document.querySelectorAll('.category-item').forEach(i => i.classList.remove('selected'));
-            document.querySelectorAll('.type-toggle-btn').forEach(b => b.classList.remove('active'));
-            document.querySelector('.type-toggle-btn[data-type="expense"]').classList.add('active');
-            document.getElementById('dateInput').value = '';
-            document.getElementById('notesInput').value = '';
-        }
+             document.getElementById('successModal').classList.remove('show');
+             // Reset form
+             amount = 0;
+             updateAmountDisplay();
+             document.getElementById('merchantInput').value = '';
+             document.querySelectorAll('.category-item').forEach(i => i.classList.remove('selected'));
+             document.querySelectorAll('.type-toggle-btn').forEach(b => b.classList.remove('active'));
+             document.querySelector('.type-toggle-btn[data-type="expense"]').classList.add('active');
+             // reset date back to today 
+             if (dateInput) {
+                dateInput.value = todayISO;
+                dateInput.max = todayISO;
+             }
+             document.getElementById('notesInput').value = '';
+         }
 
         // Close modal when clicking outside
         document.getElementById('successModal').addEventListener('click', function(e) {

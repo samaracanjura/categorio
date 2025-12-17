@@ -540,24 +540,35 @@ class Profile {
   }
 
   render() {
+    
+    // Balance
     const balance = this.storage.getBalance();
     const balanceElement = document.querySelector('.balance-amount');
     if (balanceElement) {
       balanceElement.textContent = Utils.formatCurrency(balance);
     }
 
+    // Spending
     const monthSpending = this.storage.getThisMonthSpending();
     const monthElement = document.querySelector('.month-amount');
     if (monthElement) {
       monthElement.textContent = Utils.formatCurrency(monthSpending);
     }
 
+    // Budget
+    const budget = 2500; // Example budget
+    const budgetElement = document.querySelector('.budget-amount');
+    if (budgetElement) {
+      budgetElement.textContent = `out of ${Utils.formatCurrency(budget)}`;
+    }
+
     // Calculate progress
-    const budget = 3000; // Example budget
     const progress = (monthSpending / budget) * 100;
     const progressFill = document.querySelector('.progress-fill');
     if (progressFill) {
       progressFill.style.width = `${Math.min(progress, 100)}%`;
+      const progressElement = document.querySelector('.progress-percentage');
+      progressElement.textContent = `${Math.min(progress.toFixed(1), 100)}% of budget used`;
     }
   }
 }

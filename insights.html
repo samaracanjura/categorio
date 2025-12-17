@@ -166,19 +166,25 @@
         /* Chart Section */
         .chart-section {
             display: flex;
-            gap: 24px;
-            align-items: center;
+            gap: 28px;
+            align-items: flex-start;
+            flex-wrap: wrap; 
+            justify-content: center;
         }
 
         /* Donut Chart */
         .donut-chart {
-            width: 160px;
-            height: 160px;
+            width: 180px;
+            height: 180px;
             position: relative;
             flex-shrink: 0;
+            margin-bottom: 6px;
         }
 
         .donut-svg {
+            width: 100%;
+            height: 100%;
+            display: block;
             transform: rotate(-90deg);
         }
 
@@ -188,6 +194,9 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
+            pointer-events: none;
+            width: 100%;
+            max-width: 140px;
         }
 
         .donut-label {
@@ -202,26 +211,31 @@
             font-size: 24px;
             font-weight: 800;
             color: #1E2A5E;
+            line-height: 1;
         }
 
         /* Category Legend */
         .category-legend {
             flex: 1;
+            min-width: 160px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .legend-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 12px;
+            padding: 2px 0;
         }
 
         .legend-left {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            min-width: 0;
         }
 
         .legend-dot {
@@ -238,15 +252,44 @@
         .dot-entertainment { background: #6366F1; }
 
         .legend-name {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             color: #1E2A5E;
+            display: block;
+            white-space: normal;
+            word-break: normal;
+            overflow-wrap: normal;
+            max-width: 220px;
+            min-width: 0;
         }
 
         .legend-amount {
             font-size: 15px;
             font-weight: 700;
             color: #1E2A5E;
+            flex-shrink: 0;
+            white-space: nowrap;
+            margin-left: 8px;
+        }
+
+        /* Stack chart + legend vertically on narrow screens */
+        @media (max-width: 420px) {
+            .chart-section {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+            /* center the donut when legend stacks under it */
+            .donut-chart { margin: 0 auto; }
+            .category-legend {
+                width: 100%;
+                max-width: 320px;
+                align-items: stretch;
+                margin-top: 6px;
+            }
+            .legend-name {
+                max-width: 100%;
+            }
         }
 
         /* Stats Grid */
@@ -458,7 +501,6 @@
 
         .nav-icon {
             font-size: 24px;
-            color:#1E2A5E;
         }
 
         .nav-label {

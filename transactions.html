@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for emojis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -332,11 +334,11 @@
         }
 
         /* Icon Backgrounds */
-        .icon-food { background: linear-gradient(135deg, #FFE5E5, #FFCCCB); }
-        .icon-shopping { background: linear-gradient(135deg, #FFE5F5, #FFD0EB); }
-        .icon-transport { background: linear-gradient(135deg, #E5E5FF, #D0D0FF); }
-        .icon-utilities { background: linear-gradient(135deg, #E0F7FA, #B2EBF2); }
-        .icon-income { background: linear-gradient(135deg, #E0F7E9, #B2EBD4); }
+        .icon-food { background: linear-gradient(135deg, #FFE5E5, #FFCCCB); color: #6b5050}
+        .icon-shopping { background: linear-gradient(135deg, #FFE5F5, #FFD0EB); color: #7a596c}
+        .icon-transport { background: linear-gradient(135deg, #E5E5FF, #D0D0FF); color: #444968}
+        .icon-utilities { background: linear-gradient(135deg, #E0F7FA, #B2EBF2); color: #4a6b6b}
+        .icon-income { background: linear-gradient(135deg, #E0F7E9, #B2EBD4); color: #3c5e3d}
 
         /* Transaction Content */
         .transaction-content {
@@ -493,10 +495,12 @@
                 <!-- Header -->
                 <div class="header">
                     <!-- <button class="back-button" onclick="window.location.href='index.html'">←</button> -->
-                    <button class="back-button" onclick="window.history.back()">←</button>
+                    <button class="back-button" onclick="window.history.back()">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
                     <div class="header-actions">
-                        <button class="icon-button">🧾</button>
-                        <button class="icon-button">🔍</button>
+                        <button class="icon-button"><i class="fa-solid fa-receipt"></i></button>
+                        <button class="icon-button"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                 </div>
 
@@ -564,8 +568,8 @@
                     <!-- Pizza Place -->
                     <div class="transaction-card">
                         <div class="transaction-icon icon-food">
-                            🍕
-                            <div class="verified-badge">✓</div>
+                            <i class="fa-solid fa-pizza-slice"></i>
+                            <div class="verified-badge"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
                         </div>
                         <div class="transaction-content">
                             <div class="transaction-name">Pizza Place</div>
@@ -583,8 +587,8 @@
                     <!-- Starbucks -->
                     <div class="transaction-card">
                         <div class="transaction-icon icon-food">
-                            ☕
-                            <div class="verified-badge">✓</div>
+                            <i class="fa-solid fa-coffee"></i>
+                            <div class="verified-badge"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
                         </div>
                         <div class="transaction-content">
                             <div class="transaction-name">Starbucks</div>
@@ -602,8 +606,8 @@
                     <!-- Uber -->
                     <div class="transaction-card">
                         <div class="transaction-icon icon-transport">
-                            🚗
-                            <div class="verified-badge">✓</div>
+                            <i class="fa-solid fa-car"></i>
+                            <div class="verified-badge"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
                         </div>
                         <div class="transaction-content">
                             <div class="transaction-name">Uber</div>
@@ -630,8 +634,8 @@
                     <!-- Fashion Store -->
                     <div class="transaction-card">
                         <div class="transaction-icon icon-shopping">
-                            👕
-                            <div class="verified-badge">✓</div>
+                            <i class="fa-solid fa-shirt"></i>
+                            <div class="verified-badge"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
                         </div>
                         <div class="transaction-content">
                             <div class="transaction-name">Fashion Store</div>
@@ -649,8 +653,8 @@
                     <!-- Electric Bill -->
                     <div class="transaction-card">
                         <div class="transaction-icon icon-utilities">
-                            💡
-                            <div class="verified-badge">✓</div>
+                            <i class="fa-solid fa-lightbulb"></i>
+                            <div class="verified-badge"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
                         </div>
                         <div class="transaction-content">
                             <div class="transaction-name">Electric Bill</div>
@@ -668,8 +672,8 @@
                     <!-- Salary Deposit -->
                     <div class="transaction-card">
                         <div class="transaction-icon icon-income">
-                            💵
-                            <div class="verified-badge">✓</div>
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                            <div class="verified-badge"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
                         </div>
                         <div class="transaction-content">
                             <div class="transaction-name">Salary Deposit</div>
@@ -687,8 +691,8 @@
                     <!-- McDonald's -->
                     <div class="transaction-card">
                         <div class="transaction-icon icon-food">
-                            🍔
-                            <div class="verified-badge">✓</div>
+                            <i class="fa-solid fa-burger"></i>
+                            <div class="verified-badge"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
                         </div>
                         <div class="transaction-content">
                             <div class="transaction-name">McDonald's</div>
@@ -706,8 +710,8 @@
                     <!-- Playstation Store -->
                     <div class="transaction-card">
                         <div class="transaction-icon icon-shopping">
-                            🎮
-                            <div class="verified-badge">✓</div>
+                            <i class="fa-solid fa-gamepad"></i>
+                            <div class="verified-badge"><i class="fa-solid fa-check" aria-hidden="true"></i></div>
                         </div>
                         <div class="transaction-content">
                             <div class="transaction-name">Playstation Store</div>
@@ -729,23 +733,23 @@
             <!-- Bottom Navigation INSIDE the screen -->
             <nav class="bottom-nav">
                 <div class="nav-item" onclick="navigateTo('index.html')">
-                    <div class="nav-icon">🏠</div>
+                    <div class="nav-icon"><i class="fa-solid fa-house"></i></div>
                     <div class="nav-label">Home</div>
                 </div>
                 <div class="nav-item active" onclick="navigateTo('transactions.html')">
-                    <div class="nav-icon">🧾</div>
+                    <div class="nav-icon"><i class="fa-solid fa-receipt"></i></div>
                     <div class="nav-label">Transactions</div>
                 </div>
                 <div class="nav-item" onclick="navigateTo('add-transaction.html')">
-                    <div class="nav-icon">➕</div>
+                    <div class="nav-icon"><i class="fa-solid fa-plus"></i></div>
                     <div class="nav-label">Add</div>
                 </div>
                 <div class="nav-item" onclick="navigateTo('insights.html')">
-                    <div class="nav-icon">📊</div>
+                    <div class="nav-icon"><i class="fa-solid fa-chart-simple"></i></div>
                     <div class="nav-label">Insights</div>
                 </div>
                 <div class="nav-item" onclick="navigateTo('profile.html')">
-                    <div class="nav-icon">👤</div>
+                    <div class="nav-icon"><i class="fa-solid fa-user"></i></div>
                     <div class="nav-label">Profile</div>
                 </div>
             </nav>

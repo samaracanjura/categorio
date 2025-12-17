@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for emojis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -278,6 +280,7 @@
 
         .stat-icon {
             font-size: 28px;
+            color:#1E2A5E
         }
 
         .stat-label {
@@ -340,9 +343,11 @@
             display: flex;
             gap: 16px;
             margin-bottom: 20px;
+            color: white;
         }
 
         .ai-icon {
+            color:white;
             width: 56px;
             height: 56px;
             background: linear-gradient(135deg, #7B87FF 0%, #9B7EFF 100%);
@@ -393,6 +398,10 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+        }
+
+        .action-icon {
+            font-size: 22px;
         }
 
         .download-btn {
@@ -449,6 +458,7 @@
 
         .nav-icon {
             font-size: 24px;
+            color:#1E2A5E;
         }
 
         .nav-label {
@@ -489,8 +499,12 @@
                 <!-- Header -->
                 <div class="header">
                     <!-- <button class="back-button" onclick="window.location.href='index.html'">←</button> -->
-                    <button class="back-button" onclick="window.history.back()">←</button>
-                    <button class="settings-button">⚙️</button>
+                    <button class="back-button" onclick="window.history.back()">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <button class="settings-button">
+                        <i class="fa-solid fa-gear"></i>
+                    </button>
                 </div>
 
                 <!-- Page Title -->
@@ -577,7 +591,7 @@
                     <!-- Total Spent -->
                     <div class="stat-card">
                         <div class="stat-header">
-                            <span class="stat-icon">💰</span>
+                            <span class="stat-icon"><i class="fa-solid fa-sack-dollar"></i></span>
                             <span class="stat-label">Total Spent</span>
                         </div>
                         <div class="stat-value">$1,290</div>
@@ -587,7 +601,7 @@
                     <!-- Top Category -->
                     <div class="stat-card">
                         <div class="stat-header">
-                            <span class="stat-icon">🛍️</span>
+                            <span class="stat-icon"><i class="fa-solid fa-shopping-bag"></i></span>
                             <span class="stat-label">Top Category</span>
                         </div>
                         <div class="stat-value pink">Shopping</div>
@@ -597,7 +611,7 @@
                     <!-- Spending vs Last Month -->
                     <div class="stat-card">
                         <div class="stat-header">
-                            <span class="stat-icon">📈</span>
+                            <span class="stat-icon"><i class="fa-solid fa-chart-simple"></i></span>
                             <span class="stat-label">Spending vs. Last Month</span>
                         </div>
                         <div class="stat-value green">+12%</div>
@@ -607,7 +621,7 @@
                     <!-- Upcoming Bills -->
                     <div class="stat-card">
                         <div class="stat-header">
-                            <span class="stat-icon">📅</span>
+                            <span class="stat-icon"><i class="fa-solid fa-calendar"></i></span>
                             <span class="stat-label">Upcoming Bills</span>
                         </div>
                         <div class="stat-value">$425</div>
@@ -617,7 +631,7 @@
 
                 <!-- AI Insight Banner -->
                 <div class="ai-insight">
-                    <div class="ai-icon">🤖</div>
+                    <div class="ai-icon"><i class="fa-solid fa-robot"></i></div>
                     <div class="ai-content">
                         <div class="ai-label">AI Insight</div>
                         <div class="ai-message">
@@ -629,10 +643,10 @@
                 <!-- Action Buttons -->
                 <div class="action-buttons">
                     <button class="action-btn download-btn">
-                        📥 Download Report
+                        <span class="action-icon"><i class="fa-solid fa-download"></i></span> Download Report
                     </button>
                     <button class="action-btn more-insights-btn">
-                        📊 More Insights
+                        <span class="action-icon"><i class="fa-solid fa-chart-simple"></i></span> More Insights
                     </button>
                 </div>
 
@@ -642,23 +656,23 @@
             <!-- Bottom Navigation INSIDE the screen -->
             <nav class="bottom-nav">
                 <div class="nav-item" onclick="navigateTo('index.html')">
-                    <div class="nav-icon">🏠</div>
+                    <div class="nav-icon"><i class="fa-solid fa-house"></i></div>
                     <div class="nav-label">Home</div>
                 </div>
                 <div class="nav-item" onclick="navigateTo('transactions.html')">
-                    <div class="nav-icon">🧾</div>
+                    <div class="nav-icon"><i class="fa-solid fa-receipt"></i></div>
                     <div class="nav-label">Transactions</div>
                 </div>
                 <div class="nav-item" onclick="navigateTo('add-transaction.html')">
-                    <div class="nav-icon">➕</div>
+                    <div class="nav-icon"><i class="fa-solid fa-plus"></i></div>
                     <div class="nav-label">Add</div>
                 </div>
                 <div class="nav-item active" onclick="navigateTo('insights.html')">
-                    <div class="nav-icon">📊</div>
+                    <div class="nav-icon"><i class="fa-solid fa-chart-simple"></i></div>
                     <div class="nav-label">Insights</div>
                 </div>
                 <div class="nav-item" onclick="navigateTo('profile.html')">
-                    <div class="nav-icon">👤</div>
+                    <div class="nav-icon"><i class="fa-solid fa-user"></i></div>
                     <div class="nav-label">Profile</div>
                 </div>
             </nav>

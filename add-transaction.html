@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for emojis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -253,6 +255,10 @@
             color: #5A6B8C;
         }
 
+        .toggle-icon {
+            font-size: 22px;
+        }
+
         /* Form Section */
         .form-section {
             margin-bottom: 24px;
@@ -325,6 +331,7 @@
 
         .category-icon {
             font-size: 36px;
+            color: #1E2A5E;
         }
 
         .category-name {
@@ -611,14 +618,18 @@
                 <!-- Header -->
                 <div class="header">
                     <!-- <button class="back-button" onclick="window.location.href='index.html'">←</button> -->
-                    <button class="back-button" onclick="window.history.back()">←</button>
-                    <button class="settings-button">⚙️</button>
+                    <button class="back-button" onclick="window.history.back()">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <button class="settings-button">
+                        <i class="fa-solid fa-gear"></i>
+                    </button>
                 </div>
 
                 <!-- Title Section with Logo -->
                 <div class="title-section">
                     <div class="logo-small">
-                        <!-- ✅ New logo image -->
+                        <!-- New logo image -->
                         <img src="categorio_logo.png" alt="Categorio logo">
                     </div>
                     <div class="title-text">
@@ -633,16 +644,24 @@
                     <div class="amount-display-wrapper">
                         <div class="amount-display" id="amountDisplay">$0.00</div>
                         <div class="amount-controls">
-                            <button class="amount-arrow" id="increaseBtn">⬆</button>
-                            <button class="amount-arrow" id="decreaseBtn">⬇</button>
+                            <button class="amount-arrow" id="increaseBtn">
+                                <i class="fa-solid fa-chevron-up"></i>
+                            </button>
+                            <button class="amount-arrow" id="decreaseBtn">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="transaction-type-toggle">
                         <button class="type-toggle-btn active" data-type="expense">
-                            💸 Expense
+                            <span class="toggle-icon">
+                                <i class="fa-solid fa-hand-holding-dollar"></i>
+                            </span> Expense
                         </button>
                         <button class="type-toggle-btn" data-type="income">
-                            💰 Income
+                            <span class="toggle-icon">
+                                <i class="fa-solid fa-sack-dollar"></i>
+                            </span> Income
                         </button>
                     </div>
                 </div>
@@ -663,27 +682,39 @@
                     <label class="form-label">Category</label>
                     <div class="category-grid">
                         <div class="category-item" data-category="food">
-                            <div class="category-icon">🍔</div>
+                            <div class="category-icon">
+                                <i class="fa-solid fa-utensils"></i>
+                            </div>
                             <div class="category-name">Food</div>
                         </div>
                         <div class="category-item" data-category="shopping">
-                            <div class="category-icon">🛍️</div>
+                            <div class="category-icon">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                            </div>
                             <div class="category-name">Shopping</div>
                         </div>
                         <div class="category-item" data-category="transport">
-                            <div class="category-icon">🚗</div>
+                            <div class="category-icon">
+                                <i class="fa-solid fa-car"></i>
+                            </div>
                             <div class="category-name">Transport</div>
                         </div>
                         <div class="category-item" data-category="income">
-                            <div class="category-icon">💰</div>
+                            <div class="category-icon">
+                                <i class="fa-solid fa-sack-dollar"></i>
+                            </div>
                             <div class="category-name">Income</div>
                         </div>
                         <div class="category-item" data-category="utilities">
-                            <div class="category-icon">💡</div>
+                            <div class="category-icon">
+                                <i class="fa-solid fa-lightbulb"></i>
+                            </div>
                             <div class="category-name">Utilities</div>
                         </div>
                         <div class="category-item" data-category="entertainment">
-                            <div class="category-icon">🎮</div>
+                            <div class="category-icon">
+                                <i class="fa-solid fa-gamepad"></i>
+                            </div>
                             <div class="category-name">Entertainment</div>
                         </div>
                     </div>
@@ -722,26 +753,26 @@
                 <div style="height: 20px;"></div>
             </div>
 
-            <!-- Bottom Navigation (inside phone-screen) -->
+            <!-- Bottom Navigation INSIDE the screen -->
             <nav class="bottom-nav">
                 <div class="nav-item" onclick="navigateTo('index.html')">
-                    <div class="nav-icon">🏠</div>
+                    <div class="nav-icon"><i class="fa-solid fa-house"></i></div>
                     <div class="nav-label">Home</div>
                 </div>
                 <div class="nav-item" onclick="navigateTo('transactions.html')">
-                    <div class="nav-icon">🧾</div>
+                    <div class="nav-icon"><i class="fa-solid fa-receipt"></i></div>
                     <div class="nav-label">Transactions</div>
                 </div>
                 <div class="nav-item active" onclick="navigateTo('add-transaction.html')">
-                    <div class="nav-icon">➕</div>
+                    <div class="nav-icon"><i class="fa-solid fa-plus"></i></div>
                     <div class="nav-label">Add</div>
                 </div>
                 <div class="nav-item" onclick="navigateTo('insights.html')">
-                    <div class="nav-icon">📊</div>
+                    <div class="nav-icon"><i class="fa-solid fa-chart-simple"></i></div>
                     <div class="nav-label">Insights</div>
                 </div>
                 <div class="nav-item" onclick="navigateTo('profile.html')">
-                    <div class="nav-icon">👤</div>
+                    <div class="nav-icon"><i class="fa-solid fa-user"></i></div>
                     <div class="nav-label">Profile</div>
                 </div>
             </nav>

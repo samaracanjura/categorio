@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for emojis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -146,8 +148,8 @@
             position: absolute;
             top: 8px;
             right: 8px;
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             background: #FF4E4E;
             border-radius: 50%;
             display: flex;
@@ -215,6 +217,11 @@
             margin-bottom: 16px;
         }
 
+        .section-icon {
+            color: #1E2A5E;
+            font-size: 22px;
+        }
+
         .section-title {
             font-size: 18px;
             font-weight: 700;
@@ -271,10 +278,10 @@
             flex-shrink: 0;
         }
 
-        .insight-icon-1 { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); }
-        .insight-icon-2 { background: linear-gradient(135deg, #FFF9C4, #FFEB3B); }
-        .insight-icon-3 { background: linear-gradient(135deg, #FFCDD2, #EF9A9A); }
-        .insight-icon-4 { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); }
+        .insight-icon-1 { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); color: #476348}
+        .insight-icon-2 { background: linear-gradient(135deg, #FFF9C4, #FFEB3B); color: #706c4b}
+        .insight-icon-3 { background: linear-gradient(135deg, #FFCDD2, #EF9A9A); color: #693a3a}
+        .insight-icon-4 { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); color: #6e5a3b}
 
         .insight-content {
             flex: 1;
@@ -361,11 +368,12 @@
             flex-shrink: 0;
         }
 
-        .activity-icon-food { background: linear-gradient(135deg, #FFEBEE, #FFCDD2); }
-        .activity-icon-income { background: linear-gradient(135deg, #E0F7FA, #B2EBF2); }
-        .activity-icon-utilities { background: linear-gradient(135deg, #E1F5FE, #B3E5FC); }
-        .activity-icon-shopping { background: linear-gradient(135deg, #F3E5F5, #E1BEE7); }
-
+        .activity-icon-food { background: linear-gradient(135deg, #FFE5E5, #FFCCCB); color: #6b5050}
+        .activity-icon-shopping { background: linear-gradient(135deg, #FFE5F5, #FFD0EB); color: #7a596c}
+        .activity-icon-transport { background: linear-gradient(135deg, #E5E5FF, #D0D0FF); color: #444968}
+        .activity-icon-utilities { background: linear-gradient(135deg, #E0F7FA, #B2EBF2); color: #4a6b6b}
+        .activity-icon-income { background: linear-gradient(135deg, #E0F7E9, #B2EBD4); color: #3c5e3d}
+        
         .activity-content {
             flex: 1;
         }
@@ -476,7 +484,7 @@
                         </div>
                     </div>
                     <button class="notification-btn">
-                        <span class="notification-icon">🔔</span>
+                        <span class="notification-icon"><i class="fa-solid fa-bell"></i></span>
                         <span class="notification-badge">3</span>
                     </button>
                 </div>
@@ -493,14 +501,15 @@
 
                 <!-- AI Insights Section -->
                 <div class="section-header">
-                    <h2 class="section-title">✨ AI Insights</h2>
+                    <h2 class="section-title"><span class="section-icon"><i class="fa-solid fa-chart-simple"></i></span>
+                        AI Insights</h2>
                     <a href="#" class="view-all">View All</a>
                 </div>
 
                 <div class="insights-list">
                     <!-- Smart Suggestions -->
                     <div class="insight-card">
-                        <div class="insight-icon insight-icon-1">🤖</div>
+                        <div class="insight-icon insight-icon-1"><i class="fa-solid fa-robot"></i></div>
                         <div class="insight-content">
                             <div class="insight-title">Smart Suggestions</div>
                             <div class="insight-description">Based on your spending patterns</div>
@@ -509,7 +518,7 @@
 
                     <!-- Reduce Food Spending -->
                     <div class="insight-card">
-                        <div class="insight-icon insight-icon-2">💡</div>
+                        <div class="insight-icon insight-icon-2"><i class="fa-solid fa-lightbulb"></i></div>
                         <div class="insight-content">
                             <div class="insight-title">Reduce Food Spending</div>
                             <div class="insight-description">You spend 23% more on dining this week. Try meal prepping!</div>
@@ -519,7 +528,7 @@
 
                     <!-- Budget Reminder -->
                     <div class="insight-card">
-                        <div class="insight-icon insight-icon-3">🎯</div>
+                        <div class="insight-icon insight-icon-3"><i class="fa-solid fa-bell"></i></div>
                         <div class="insight-content">
                             <div class="insight-title">Budget Reminder</div>
                             <div class="insight-description">You're 80% through your monthly entertainment budget.</div>
@@ -529,7 +538,7 @@
 
                     <!-- Save More This Month -->
                     <div class="insight-card">
-                        <div class="insight-icon insight-icon-4">💰</div>
+                        <div class="insight-icon insight-icon-4"><i class="fa-solid fa-sack-dollar"></i></div>
                         <div class="insight-content">
                             <div class="insight-title">Save More This Month</div>
                             <div class="insight-description">You could save $200 by reducing impulse purchases.</div>
@@ -543,14 +552,15 @@
 
                 <!-- Recent Activity Section -->
                 <div class="section-header">
-                    <h2 class="section-title">📋 Recent Activity</h2>
+                    <h2 class="section-title"><span class="section-icon"><i class="fa-solid fa-clipboard-list"></i></span>
+                        Recent Activity</h2>
                     <a href="#" class="view-all">View All</a>
                 </div>
 
                 <div class="activity-list">
                     <!-- Pizza Place -->
                     <div class="activity-card">
-                        <div class="activity-icon activity-icon-food">🍕</div>
+                        <div class="activity-icon activity-icon-food"><i class="fa-solid fa-pizza-slice"></i></div>
                         <div class="activity-content">
                             <div class="activity-title">Pizza Place</div>
                             <div class="activity-category">Food & Dining</div>
@@ -560,7 +570,7 @@
 
                     <!-- Salary Deposit -->
                     <div class="activity-card">
-                        <div class="activity-icon activity-icon-income">💵</div>
+                        <div class="activity-icon activity-icon-income"><i class="fa-solid fa-money-bill-wave"></i></div>
                         <div class="activity-content">
                             <div class="activity-title">Salary Deposit</div>
                             <div class="activity-category">Income</div>
@@ -570,7 +580,7 @@
 
                     <!-- Electric Bill -->
                     <div class="activity-card">
-                        <div class="activity-icon activity-icon-utilities">💡</div>
+                        <div class="activity-icon activity-icon-utilities"><i class="fa-solid fa-lightbulb"></i></div>
                         <div class="activity-content">
                             <div class="activity-title">Electric Bill</div>
                             <div class="activity-category">Utilities</div>
@@ -580,7 +590,7 @@
 
                     <!-- Fashion Store -->
                     <div class="activity-card">
-                        <div class="activity-icon activity-icon-shopping">👕</div>
+                        <div class="activity-icon activity-icon-shopping"><i class="fa-solid fa-shirt"></i></div>
                         <div class="activity-content">
                             <div class="activity-title">Fashion Store</div>
                             <div class="activity-category">Shopping</div>
@@ -595,23 +605,23 @@
             <!-- Bottom Navigation INSIDE the screen -->
             <nav class="bottom-nav">
                 <div class="nav-item active" onclick="navigateTo('index.html')">
-                    <div class="nav-icon">🏠</div>
+                    <div class="nav-icon"><i class="fa-solid fa-house"></i></div>
                     <div class="nav-label">Home</div>
                 </div>
                 <div class="nav-item" onclick="navigateTo('transactions.html')">
-                    <div class="nav-icon">🧾</div>
+                    <div class="nav-icon"><i class="fa-solid fa-receipt"></i></div>
                     <div class="nav-label">Transactions</div>
                 </div>
                 <div class="nav-item" onclick="navigateTo('add-transaction.html')">
-                    <div class="nav-icon">➕</div>
+                    <div class="nav-icon"><i class="fa-solid fa-plus"></i></div>
                     <div class="nav-label">Add</div>
                 </div>
                 <div class="nav-item" onclick="navigateTo('insights.html')">
-                    <div class="nav-icon">📊</div>
+                    <div class="nav-icon"><i class="fa-solid fa-chart-simple"></i></div>
                     <div class="nav-label">Insights</div>
                 </div>
                 <div class="nav-item" onclick="navigateTo('profile.html')">
-                    <div class="nav-icon">👤</div>
+                    <div class="nav-icon"><i class="fa-solid fa-user"></i></div>
                     <div class="nav-label">Profile</div>
                 </div>
             </nav>

@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for emojis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -99,7 +101,7 @@
         .back-button:hover {
             background: #EBEEF5;
         }
-
+        
         .settings-button {
             width: 48px;
             height: 48px;
@@ -133,6 +135,7 @@
             width: 80px;
             height: 80px;
             background: linear-gradient(135deg, #5C6FFF 0%, #9B7EFF 100%);
+            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -280,6 +283,7 @@
             width: 64px;
             height: 64px;
             background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+            color: white;
             border-radius: 18px;
             display: flex;
             align-items: center;
@@ -387,6 +391,7 @@
 
         .action-icon {
             font-size: 36px;
+            color: #1E2A5E;
         }
 
         .action-label {
@@ -416,6 +421,10 @@
             background: #FFF5F5;
         }
 
+        .logout-icon {
+            font-size: 20px;
+        }
+
         /* Help & Support Button */
         .help-btn {
             width: 100%;
@@ -437,6 +446,10 @@
         .help-btn:hover {
             background: #F7F8FB;
             transform: translateY(-2px);
+        }
+
+        .help-icon {
+            font-size: 20px;
         }
 
         /* Bottom Navigation */
@@ -512,13 +525,17 @@
                 <!-- Header -->
                 <div class="header">
                     <!-- <button class="back-button" onclick="window.location.href='index.html'">←</button> -->
-                    <button class="back-button" onclick="window.history.back()">←</button>
-                    <button class="settings-button">⚙️</button>
+                    <button class="back-button" onclick="window.history.back()">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                    <button class="settings-button">
+                        <i class="fa-solid fa-gear"></i>
+                    </button>
                 </div>
 
                 <!-- Profile Card -->
                 <div class="profile-card">
-                    <div class="profile-avatar">👤</div>
+                    <div class="profile-avatar"><i class="fa-solid fa-user"></i></div>
                     <div class="profile-info">
                         <h1 class="profile-name">Alex Thomas</h1>
                         <p class="profile-email">alex.thomas@email.com</p>
@@ -551,7 +568,7 @@
 
                 <!-- Goal Achievements -->
                 <div class="goal-card">
-                    <div class="goal-icon">🏆</div>
+                    <div class="goal-icon"><i class="fa-solid fa-trophy"></i></div>
                     <div class="goal-content">
                         <div class="goal-title">Goal Achievements</div>
                         <div class="goal-count">3 goals completed</div>
@@ -581,48 +598,48 @@
                 <!-- Action Buttons -->
                 <div class="action-buttons">
                     <button class="action-btn" onclick="window.location.href='transactions.html'">
-                        <div class="action-icon">💳</div>
+                        <div class="action-icon"><i class="fa-solid fa-receipt"></i></div>
                         <div class="action-label">View Transactions</div>
                     </button>
                     <button class="action-btn">
-                        <div class="action-icon">📤</div>
+                        <div class="action-icon"><i class="fa-solid fa-upload"></i></div>
                         <div class="action-label">Upload Documents</div>
                     </button>
                 </div>
 
                 <!-- Log Out -->
                 <button class="logout-btn" onclick="if(confirm('Are you sure you want to log out?')) window.location.href='login.html'">
-                    Log Out
+                    <span class="logout-icon"><i class="fa-solid fa-right-from-bracket"></i></span> Log Out
                 </button>
 
                 <!-- Help & Support -->
                 <button class="help-btn">
-                    ℹ️ Help & Support
+                    <span class="help-icon"><i class="fa-regular fa-circle-question"></i></span> Help & Support
                 </button>
 
                 <div style="height: 20px;"></div>
             </div> <!-- end .content-container -->
 
-            <!-- Bottom Navigation INSIDE the screen -->
+           <!-- Bottom Navigation INSIDE the screen -->
             <nav class="bottom-nav">
                 <div class="nav-item" onclick="navigateTo('index.html')">
-                    <div class="nav-icon">🏠</div>
+                    <div class="nav-icon"><i class="fa-solid fa-house"></i></div>
                     <div class="nav-label">Home</div>
                 </div>
                 <div class="nav-item" onclick="navigateTo('transactions.html')">
-                    <div class="nav-icon">🧾</div>
+                    <div class="nav-icon"><i class="fa-solid fa-receipt"></i></div>
                     <div class="nav-label">Transactions</div>
                 </div>
                 <div class="nav-item" onclick="navigateTo('add-transaction.html')">
-                    <div class="nav-icon">➕</div>
+                    <div class="nav-icon"><i class="fa-solid fa-plus"></i></div>
                     <div class="nav-label">Add</div>
                 </div>
                 <div class="nav-item" onclick="navigateTo('insights.html')">
-                    <div class="nav-icon">📊</div>
+                    <div class="nav-icon"><i class="fa-solid fa-chart-simple"></i></div>
                     <div class="nav-label">Insights</div>
                 </div>
                 <div class="nav-item active" onclick="navigateTo('profile.html')">
-                    <div class="nav-icon">👤</div>
+                    <div class="nav-icon"><i class="fa-solid fa-user"></i></div>
                     <div class="nav-label">Profile</div>
                 </div>
             </nav>

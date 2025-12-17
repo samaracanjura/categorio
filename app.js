@@ -158,14 +158,14 @@ const Utils = {
 
   getCategoryIcon(category) {
     const icons = {
-      food: '🍕',
-      shopping: '🛍️',
-      transport: '🚗',
-      utilities: '💡',
-      entertainment: '🎮',
-      income: '💰'
+      food: '<i class="fa-solid fa-utensils" aria-hidden="true"></i>',
+      shopping: '<i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>',
+      transport: '<i class="fa-solid fa-car" aria-hidden="true"></i>',
+      utilities: '<i class="fa-solid fa-bolt" aria-hidden="true"></i>',
+      entertainment: '<i class="fa-solid fa-gamepad" aria-hidden="true"></i>',
+      income: '<i class="fa-solid fa-wallet" aria-hidden="true"></i>'
     };
-    return icons[category] || '📝';
+    return icons[category] || '<i class="fa-solid fa-note-sticky" aria-hidden="true"></i>';
   },
 
   formatDate(dateString) {
